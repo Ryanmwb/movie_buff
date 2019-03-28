@@ -46,14 +46,13 @@ router.get("/:id/recommendations", (req, res) => {
 // @route   get api/movie/now_playing
 // @desc    get movies that are now playing
 // @access  Public
-router.get("/now_playing", (req, res) => {
-  var pageNumber = 1;
+router.get("/movies/now_playing", (req, res) => {
+  var pageNumber = 2;
   var page = "&page=".concat(pageNumber);
   var url = "".concat(base, "movie/", "now_playing", key, page);
-  res.json({});
-  /* fetch(url)
+  fetch(url)
     .then(result => result.json())
-    .then(data => res.json()); */
+    .then(data => res.json(data));
 });
 
 // @route   get api/movie/upcoming
