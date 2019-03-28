@@ -52,4 +52,8 @@ router.get("/:id/details", (req, res) => {
     .then(data => res.json(data));
 });
 
+router.get("/test", (req, res) => {
+  console.log("testing person routes...");
+});
+
 module.exports = router;

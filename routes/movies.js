@@ -50,10 +50,10 @@ router.get("/now_playing", (req, res) => {
   var pageNumber = 1;
   var page = "&page=".concat(pageNumber);
   var url = "".concat(base, "movie/", "now_playing", key, page);
-  console.log(url);
-  fetch(url)
+  res.json({});
+  /* fetch(url)
     .then(result => result.json())
-    .then(data => res.json(data));
+    .then(data => res.json()); */
 });
 
 // @route   get api/movie/upcoming
@@ -67,6 +67,11 @@ router.get("/upcoming", (req, res) => {
   fetch(test)
     .then(result => result.json())
     .then(data => res.json(data));
+});
+
+router.get("/now_playing_check", (req, res) => {
+  console.log("testing...");
+  res.json({ status: true });
 });
 
 // @route   get api/person/popular
