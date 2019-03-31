@@ -17,12 +17,12 @@ app.use(bodyParser.json());
 // TODO add passport middleware
 
 //        --ROUTE LOGIC--
+const movie = require("./routes/movie");
 const persons = require("./routes/persons");
-const movies = require("./routes/movies");
 
 //        --ROUTES--
+app.use("/api/movie", movie);
 app.use("/api/person", persons);
-app.use("/api/movies", movies);
 
 //        --SERVER--
 const port = process.env.PORT || 5000;

@@ -22,7 +22,7 @@ router.get("/popular", (req, res) => {
 // @route   get api/person/search
 // @desc    search for people by name
 // @access  Public
-router.get("/search", (req, res) => {
+router.post("/search", (req, res) => {
   var query = "&query=".concat(req.body.query);
   var url = "".concat(base, "search/person", key, query);
   fetch(url)

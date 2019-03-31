@@ -1,0 +1,16 @@
+.btn.btn-outline-primary:focus {
+  background-color: blue;
+}
+
+body {
+  background: url("./img/theater.jpg");
+  background-size: cover;
+  background-repeat: repeat-y;
+  background-position: center top;
+  height: 100vh;
+}
+
+.display {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 15px;
+}
