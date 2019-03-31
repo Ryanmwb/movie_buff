@@ -6,6 +6,7 @@ import {
   GET_PERSON_DETAILS,
   LOADING
 } from "../actions/types";
+import { getPersonDetails } from "../actions/personActions";
 
 const initialState = {
   loading: false,
@@ -22,6 +23,15 @@ export default function(state = initialState, action) {
         display: "Popular People",
         loading: false,
         people: action.payload
+      };
+    case GET_PERSON_DETAILS:
+      console.log("payload is...");
+      console.log(action.payload);
+      return {
+        ...state,
+        display: `${action.payload.name}`,
+        loading: false,
+        person: action.payload
       };
     case LOADING:
       return {

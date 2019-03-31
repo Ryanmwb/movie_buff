@@ -39,10 +39,10 @@ class Display extends Component {
     }
   }
 
-  getPerson(e) {
+  getPerson(id) {
     console.log("e.target.value is....");
-    console.log(e.target.key);
-    this.props.getPersonDetails(e.target.value);
+    console.log(id);
+    this.props.getPersonDetails(id);
   }
 
   render() {
@@ -55,8 +55,9 @@ class Display extends Component {
           <Link
             to="/people/details"
             className="person col-lg-3 col-md-4 col-sm-6 mx-auto mb-5 text-light"
-            onClick={this.getPerson}
+            onClick={() => this.getPerson(person.id)}
             key={person.id}
+            data-id={person.id}
           >
             <div>
               <img

@@ -27,7 +27,12 @@ export const getPersonDetails = id => dispatch => {
   console.log("action - getpersondetails...");
   console.log(id);
   dispatch(loading());
-  axios.get(`/api/people/${id}/details`).then(res => console.log(res));
+  axios.get(`/api/people/${id}/details`).then(res => {
+    dispatch({
+      type: GET_PERSON_DETAILS,
+      payload: res.data
+    });
+  });
 };
 
 // set loading to true

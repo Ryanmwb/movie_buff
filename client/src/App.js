@@ -8,6 +8,7 @@ import Discover from "./components/movies/Discover";
 
 // import people components
 import PersonDisplay from "./components/people/Display";
+import PersonDetails from "./components/people/Details";
 
 // import layout components
 import Navbar from "./components/layout/Navbar";
@@ -33,6 +34,7 @@ class App extends Component {
               <Route exact path="/movies" component={MovieDisplay} />
               <Route exact path="/discover" component={Discover} />
               <Route exact path="/people" component={PersonDisplay} />
+              <Route exact path="/people/details" component={PersonDetails} />
             </div>
           </div>
         </Router>
