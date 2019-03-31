@@ -5,12 +5,14 @@ import { connect } from "react-redux";
 
 //import actions
 import { getComingSoon, getNowPlaying } from "../../actions/movieActions";
+import { getPopularPeople } from "../../actions/personActions";
 
 class Navbar extends Component {
   constructor() {
     super();
     this.upComing = this.upComing.bind(this);
     this.nowPlaying = this.nowPlaying.bind(this);
+    this.popular = this.popular.bind(this);
   }
 
   upComing() {
@@ -21,6 +23,11 @@ class Navbar extends Component {
   nowPlaying() {
     console.log("nowPlaying() called...");
     this.props.getNowPlaying();
+  }
+
+  popular() {
+    console.log("popular() called...");
+    this.props.getPopularPeople();
   }
 
   render() {
@@ -39,9 +46,11 @@ class Navbar extends Component {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="mobile-nav">
-            <div className="bg-light row rounded ml-3">
-              <h5 className="my-auto border-right border-dark">Movies</h5>
-              <ul className="navbar-nav mr-auto">
+            <div className="bg-light row rounded mx-3 px-1">
+              <small className="my-auto px-2 border-right border-dark text-muted">
+                Movies
+              </small>
+              <ul className="navbar-nav mr-3">
                 <li className="nav-item">
                   <Link
                     className="nav-link text-dark"
@@ -53,7 +62,7 @@ class Navbar extends Component {
                 </li>
                 <li className="nav-item">
                   <Link
-                    className="nav-link"
+                    className="nav-link text-dark"
                     to="/movies"
                     onClick={this.nowPlaying}
                   >
@@ -61,8 +70,24 @@ class Navbar extends Component {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/discover">
+                  <Link className="nav-link text-dark" to="/discover">
                     Discover
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div className="bg-light row rounded mx-3 px-1 mr-auto">
+              <small className="my-auto px-2 border-right border-dark text-muted">
+                People
+              </small>
+              <ul className="navbar-nav mr-auto">
+                <li className="nav-item">
+                  <Link
+                    to="/people"
+                    className="nav-link text-dark"
+                    onClick={this.popular}
+                  >
+                    Popular
                   </Link>
                 </li>
               </ul>
@@ -78,5 +103,5 @@ class Navbar extends Component {
 
 export default connect(
   null,
-  { getNowPlaying, getComingSoon }
+  { getNowPlaying, getComingSoon, getPopularPeople }
 )(Navbar);

@@ -3,8 +3,11 @@ import { BrowserRouter as Router, Route } from "react-router-dom"; // marking Br
 import { Provider } from "react-redux";
 
 // import movie components
-import Display from "./components/movies/Display";
+import MovieDisplay from "./components/movies/Display";
 import Discover from "./components/movies/Discover";
+
+// import people components
+import PersonDisplay from "./components/people/Display";
 
 // import layout components
 import Navbar from "./components/layout/Navbar";
@@ -27,8 +30,9 @@ class App extends Component {
             <Search />
             <Route exact path="/" component={Landing} />
             <div className="container">
-              <Route exact path="/movies" component={Display} />
+              <Route exact path="/movies" component={MovieDisplay} />
               <Route exact path="/discover" component={Discover} />
+              <Route exact path="/people" component={PersonDisplay} />
             </div>
           </div>
         </Router>

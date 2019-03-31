@@ -13,6 +13,7 @@ const base = "https://api.themoviedb.org/3/";
 // @desc    get pages of popular people in film industry
 // @access  Public
 router.get("/popular", (req, res) => {
+  console.log("popular called...");
   var url = "".concat(base, "person/popular", key);
   fetch(url)
     .then(result => result.json())

@@ -43,7 +43,7 @@ class Search extends Component {
 
   render() {
     return (
-      <div className="col-9 mx-auto my-2">
+      <div className="col-lg-8 mx-auto my-2">
         <div className="input-group">
           <div className="input-group-prepend">
             <span className="input-group-text" id="">

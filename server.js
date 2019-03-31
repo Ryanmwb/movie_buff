@@ -22,7 +22,7 @@ const persons = require("./routes/persons");
 
 //        --ROUTES--
 app.use("/api/movie", movie);
-app.use("/api/person", persons);
+app.use("/api/people", persons);
 
 //        --SERVER--
 const port = process.env.PORT || 5000;

@@ -31,7 +31,6 @@ export default function(state = initialState, action) {
         upcoming: action.payload
       };
     case GET_NOW_PLAYING:
-      console.log("reducer - getnowplaying...");
       return {
         ...state,
         display: "Now Playing",
@@ -39,7 +38,6 @@ export default function(state = initialState, action) {
         nowPlaying: action.payload
       };
     case GET_MOVIE_SEARCH:
-      console.log("reducer - getMovieSearch");
       return {
         ...state,
         display: "Search Results",
@@ -52,7 +50,6 @@ export default function(state = initialState, action) {
         loading: true
       };
     default:
-      console.log(state);
       return state;
   }
 }

@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 //import actions
-//import { getNowPlaying } from "../../actions/movieActions";
 
 class Display extends Component {
   constructor() {
@@ -75,8 +74,8 @@ class Display extends Component {
     var display;
     if (!this.state.loading) {
       var display = this.state.movies.map(movie => {
-        var link = `https://image.tmdb.org/t/p/w185${movie.poster_path}`;
-        var alt = `Post for '${movie.title}'`;
+        var img = `https://image.tmdb.org/t/p/w185${movie.poster_path}`;
+        var alt = `Poster for '${movie.title}'`;
         var date = movie.release_date.split("-");
         var dateReformatted = [date[1], date[2], date[0]].join("/");
         return (
@@ -86,7 +85,7 @@ class Display extends Component {
           >
             <img
               className="mx-0"
-              src={link}
+              src={img}
               alt={alt}
               style={{ display: "block", borderRadius: "10px" }}
             />
