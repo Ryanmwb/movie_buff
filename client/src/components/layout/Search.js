@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
+import { getPersonSearch } from "../../actions/personActions";
 import { getMovieSearch } from "../../actions/movieActions";
 
 class Search extends Component {
@@ -36,8 +37,8 @@ class Search extends Component {
     if (this.state.movie.length !== 0 && this.state.person.length === 0) {
       this.props.getMovieSearch(this.state.movie);
     }
-    if (this.state.movie.length !== 0 && this.state.person.length === 0) {
-      this.props.getMovieSearch(this.state.movie);
+    if (this.state.person.length !== 0 && this.state.movie.length === 0) {
+      this.props.getPersonSearch(this.state.person);
     }
   }
 
@@ -90,5 +91,5 @@ const mapStateToProps = state => ({});
 
 export default connect(
   mapStateToProps,
-  { getMovieSearch }
+  { getMovieSearch, getPersonSearch }
 )(Search);

@@ -64,7 +64,7 @@ class Display extends Component {
                 src={img}
                 alt={alt}
                 className="mx-0"
-                style={{ display: "block", borderRadius: "10px" }}
+                style={{ display: "block", borderRadius: "7px" }}
               />
               <h3 className="display-5 text-light">{person.name}</h3>
             </div>
