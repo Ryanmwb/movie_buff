@@ -34,6 +34,7 @@ class Search extends Component {
   }
 
   submit() {
+    this.setState({ person: "", movie: "" });
     if (this.state.movie.length !== 0 && this.state.person.length === 0) {
       this.props.getMovieSearch(this.state.movie);
     }

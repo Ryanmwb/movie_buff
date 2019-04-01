@@ -9,6 +9,8 @@ import {
   GET_MOVIE_SEARCH,
   GET_RECOMMENDATIONS,
   GET_MOVIE_CREDITS,
+  LOADING_CREDITS,
+  LOADING_DETAILS,
   LOADING
 } from "./types";
 
@@ -63,8 +65,28 @@ export const getMovieSearch = query => dispatch => {
     });
 };
 
+// get movie details
+export const getMovieDetails = id => dispatch => {
+  console.log("action - getMovieDetails");
+  console.log(id);
+  dispatch(loadingDetails());
+  axios.get(`/api/movie/${id}/details`).then(res =>
+    dispatch({
+      type: GET_MOVIE_DETAILS,
+      payload: res.data
+    })
+  );
+};
+
+export const loadingDetails = () => dispatch => {
+  console.log("loadingDetails()...");
+  dispatch({
+    type: LOADING_DETAILS
+  });
+};
+
 // set loading to true
-export const movieLoading = () => {
+export const movieLoading = () => dispatch => {
   console.log("movieLoading action called...");
   return {
     type: LOADING

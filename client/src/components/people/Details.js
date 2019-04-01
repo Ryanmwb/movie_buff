@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 // imp proptypes
 import PropTypes from "prop-types";
 
+// import actions
+import { getMovieDetails } from "../../actions/movieActions";
+
 class Details extends Component {
   constructor() {
     super();
@@ -12,44 +15,94 @@ class Details extends Component {
       person: null,
       loading: true,
       title: "Loading...",
-      credits: ""
+      credits: null
     };
+    this.movieClick = this.movieClick.bind(this);
   }
 
   // TODO:  this should present the current person in state if props.loading == false.  This way we don't have to wait on API call
   componentWillMount() {
     console.log("cwm");
-    console.log(this.props);
     console.log(this.state);
+    console.log(this.props);
     if (
-      this.props.person !== (null || undefined) &&
-      this.props.loading === false
+      this.props.loadingCredits === false &&
+      this.props.loadingDetails === false
     ) {
-      this.setState({ person: this.props.person });
-    }
-    if (this.props.credits !== null) {
-      this.setState({ credits: this.props.credits });
+      this.setState({
+        person: this.props.person,
+        credits: this.props.credits,
+        loading: false,
+        title: this.props.display
+      });
     }
   }
 
   componentWillReceiveProps(nextProps) {
     console.log("cwrp");
     console.log(nextProps);
-    if (nextProps.person !== null) {
-      console.log("nextprops.person not null...");
+    if (
+      nextProps.loadingCredits === false &&
+      nextProps.loadingDetails === false
+    ) {
+      console.log("credits and details are no longer loading...");
+      console.log(nextProps);
       this.setState({ person: nextProps.person });
+      this.setState({ credits: nextProps.credits });
       this.setState({ title: nextProps.display });
-      this.setState({ loading: false });
-    }
-    if (nextProps.credits !== null) {
-      console.log("abouot to update credits....");
-      this.setState({ loading: false });
     }
   }
 
+  movieClick(id) {
+    console.log("movieClick()...");
+    this.props.history.push("/movie/details");
+    this.props.getMovieDetails(id);
+  }
+
   render() {
-    var display;
-    if (!this.state.loading) {
+    var display = null;
+    var credits = null;
+    if (this.state.person !== null && this.state.credits !== null) {
+      console.log("about to create render...");
+      console.log(this.state);
+      // start here.. trying to get credits to show
+
+      //set credits
+      console.log("state.credits is not null anymore...");
+      console.log(this.state);
+      var data = this.state.credits.map(credit => (
+        <tr
+          key={credit.id}
+          className="personCredits"
+          onClick={() => this.movieClick(credit.id)}
+        >
+          <td scope="row" className="text-right">
+            {credit.title}
+          </td>
+          <td className="text-center">{credit.release_date}</td>
+          <td className="text-left">{credit.character}</td>
+        </tr>
+      ));
+      credits = (
+        <table className="table table-striped table-dark my-3 rounded">
+          <thead>
+            <tr>
+              <th scope="col" className="text-right bg-dark">
+                Movie Title
+              </th>
+              <th scope="col" className="text-center">
+                Release Date
+              </th>
+              <th scope="col" className="text-left">
+                Character
+              </th>
+            </tr>
+          </thead>
+          <tbody>{data}</tbody>
+        </table>
+      );
+
+      // Set person profile
       var img = `https://image.tmdb.org/t/p/w185/${
         this.state.person.profile_path
       }`;
@@ -78,31 +131,8 @@ class Details extends Component {
           </div>
         );
       }
-      // start here.. trying to get credits to show
 
-      //set credits
-      var credits = null;
-      if (this.props.credits !== null) {
-        console.log("state.credits is not null anymore...");
-        var data = this.state.credits.map(credit => (
-          <tr>
-            <td scope="row">{credit.title}</td>
-            <td>{credit.release_date}</td>
-            <td>{credit.character}</td>
-          </tr>
-        ));
-        <table class="table table-dark">
-          <thead>
-            <tr>
-              <th scope="col">Movie Title</th>
-              <th scope="col">Release Date</th>
-              <th scope="col">Character</th>
-            </tr>
-          </thead>
-          <tbody>{data}</tbody>
-        </table>;
-      }
-
+      // display both profile and credits
       display = (
         <div className="row">
           <div className="col-lg-3 col-md-6 col-sm-12 mx-auto">
@@ -148,7 +178,8 @@ class Details extends Component {
   }
 }
 const mapStateToProps = state => ({
-  loading: state.people.loading,
+  loadingCredits: state.people.loadingCredits,
+  loadingDetails: state.people.loadingDetails,
   display: state.people.display,
   person: state.people.person,
   credits: state.people.credits
@@ -156,5 +187,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  null
+  { getMovieDetails }
 )(Details);

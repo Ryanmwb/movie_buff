@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 
 // import movie components
 import MovieDisplay from "./components/movies/Display";
+import MovieDetails from "./components/movies/Details";
 import Discover from "./components/movies/Discover";
 
 // import people components
@@ -32,6 +33,7 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <div className="container">
               <Route exact path="/movies" component={MovieDisplay} />
+              <Route exact path="/movie/details" component={MovieDetails} />
               <Route exact path="/discover" component={Discover} />
               <Route exact path="/people" component={PersonDisplay} />
               <Route exact path="/people/details" component={PersonDetails} />

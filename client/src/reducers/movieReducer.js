@@ -6,7 +6,9 @@ import {
   GET_RECOMMENDATIONS,
   GET_MOVIE_CREDITS,
   GET_MOVIE_SEARCH,
-  LOADING
+  LOADING,
+  LOADING_CREDITS,
+  LOADING_DETAILS
 } from "../actions/types";
 
 const initialState = {
@@ -44,10 +46,22 @@ export default function(state = initialState, action) {
         search: action.payload,
         loading: false
       };
+    case GET_MOVIE_DETAILS:
+      console.log("reducer - get movie details");
+      return {
+        ...state,
+        movieDetails: action.payload,
+        loadingDetails: false
+      };
     case LOADING:
       return {
         ...state,
         loading: true
+      };
+    case LOADING_DETAILS:
+      return {
+        ...state,
+        loadingDetails: true
       };
     default:
       return state;

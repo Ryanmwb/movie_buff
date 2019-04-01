@@ -57,7 +57,6 @@ class Display extends Component {
             className="person col-lg-3 col-md-4 col-sm-6 mx-auto mb-5 text-light"
             onClick={() => this.getPerson(person.id)}
             key={person.id}
-            data-id={person.id}
           >
             <div>
               <img

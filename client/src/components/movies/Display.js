@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 // imp proptypes
 import PropTypes from "prop-types";
 
 //import actions
+import { getMovieDetails } from "../../actions/movieActions";
 
 class Display extends Component {
   constructor() {
@@ -16,6 +18,7 @@ class Display extends Component {
       loading: true,
       title: "Loading..."
     };
+    this.getDetails = this.getDetails.bind(this);
   }
 
   componentWillMount() {
@@ -70,6 +73,11 @@ class Display extends Component {
     }
   }
 
+  getDetails(id) {
+    console.log("getDetails().....");
+    this.props.getMovieDetails(id);
+  }
+
   render() {
     var display;
     if (!this.state.loading) {
@@ -79,9 +87,11 @@ class Display extends Component {
         var date = movie.release_date.split("-");
         var dateReformatted = [date[1], date[2], date[0]].join("/");
         return (
-          <div
+          <Link
+            to="/movie/details"
             key={movie.id}
             className="movie col-lg-3 col-md-4 col-sm-6 mx-auto mb-5 text-light"
+            onClick={() => this.getDetails(movie.id)}
           >
             <img
               className="mx-0"
@@ -92,7 +102,7 @@ class Display extends Component {
             <h3 className="display-5 text-light">{movie.title}</h3>
             <h5>Rating: {movie.vote_average}</h5>
             <h5>{dateReformatted}</h5>
-          </div>
+          </Link>
         );
       });
     }
@@ -131,5 +141,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  null
+  { getMovieDetails }
 )(Display);

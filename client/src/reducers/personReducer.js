@@ -4,14 +4,18 @@ import {
   GET_PERSON_SEARCH,
   GET_POPULAR_PERSONS,
   GET_PERSON_DETAILS,
-  LOADING
+  LOADING,
+  LOADING_CREDITS,
+  LOADING_DETAILS
 } from "../actions/types";
 
 const initialState = {
   loading: false,
   people: null,
   credits: null,
-  details: null
+  details: null,
+  loadingDetails: false,
+  loadingCredits: false
 };
 
 export default function(state = initialState, action) {
@@ -24,12 +28,10 @@ export default function(state = initialState, action) {
         people: action.payload
       };
     case GET_PERSON_DETAILS:
-      console.log("reducer, pDetails - payload is...");
-      console.log(action.payload);
       return {
         ...state,
         display: `${action.payload.name}`,
-        loading: false,
+        loadingDetails: false,
         person: action.payload
       };
     case GET_PERSON_SEARCH:
@@ -40,12 +42,20 @@ export default function(state = initialState, action) {
         people: action.payload
       };
     case GET_PERSON_CREDITS:
-      console.log("reducer, pCredits - payload is..");
-      console.log(action.payload);
       return {
         ...state,
-        loading: false,
+        loadingCredits: false,
         credits: action.payload
+      };
+    case LOADING_CREDITS:
+      return {
+        ...state,
+        loadingCredits: true
+      };
+    case LOADING_DETAILS:
+      return {
+        ...state,
+        loadingDetails: true
       };
     case LOADING:
       return {

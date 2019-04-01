@@ -7,7 +7,9 @@ import {
   GET_PERSON_SEARCH,
   GET_POPULAR_PERSONS,
   GET_PERSON_DETAILS,
-  LOADING
+  LOADING,
+  LOADING_DETAILS,
+  LOADING_CREDITS
 } from "./types";
 
 // get popular people
@@ -24,9 +26,7 @@ export const getPopularPeople = () => dispatch => {
 
 // get person details
 export const getPersonDetails = id => dispatch => {
-  dispatch(loading());
-  console.log("action - getPersonDetails.  Id is...");
-  console.log(id);
+  dispatch(loadingDetails());
   dispatch(getPersonCredits(id));
   axios.get(`/api/people/${id}/details`).then(res => {
     dispatch({
@@ -37,8 +37,7 @@ export const getPersonDetails = id => dispatch => {
 };
 
 export const getPersonCredits = id => dispatch => {
-  console.log("action - getPersonCredits.  ID is...");
-  console.log(id);
+  dispatch(loadingCredits());
   axios.get(`/api/people/${id}/credits`).then(res => {
     dispatch({
       type: GET_PERSON_CREDITS,
@@ -49,8 +48,6 @@ export const getPersonCredits = id => dispatch => {
 
 // get person search
 export const getPersonSearch = query => dispatch => {
-  console.log("action - get personsearch...");
-  console.log(query);
   dispatch(loading());
   axios
     .request({
@@ -59,8 +56,6 @@ export const getPersonSearch = query => dispatch => {
       data: { query }
     })
     .then(res => {
-      console.log("action- getpersonsearch");
-      console.log(res);
       dispatch({
         type: GET_PERSON_SEARCH,
         payload: res.data.results
@@ -72,5 +67,19 @@ export const getPersonSearch = query => dispatch => {
 export const loading = () => dispatch => {
   dispatch({
     type: LOADING
+  });
+};
+// set loading to true
+export const loadingDetails = () => dispatch => {
+  console.log("action - loading person details...");
+  dispatch({
+    type: LOADING_DETAILS
+  });
+};
+
+// set loading to true
+export const loadingCredits = () => dispatch => {
+  dispatch({
+    type: LOADING_CREDITS
   });
 };

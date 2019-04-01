@@ -12,7 +12,7 @@ const base = "https://api.themoviedb.org/3/";
 // @route   get api/movie/:id
 // @desc    get movie details
 // @access  Public
-router.get("/movie/:id", (req, res) => {
+router.get("/:id/details", (req, res) => {
   var id = req.params.id;
   var url = "".concat(base, "movie/", id, key);
   fetch(url)

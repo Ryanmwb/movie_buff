@@ -32,7 +32,7 @@ class Navbar extends Component {
 
   render() {
     return (
-      <nav className=" navbar navbar-expand-sm navbar-dark bg-dark">
+      <nav className=" navbar navbar-expand-md navbar-dark bg-dark">
         <div className="container">
           <Link to="/" className="navbar-brand">
             Movie Buff
