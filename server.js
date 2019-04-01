@@ -1,6 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
+// path needed to set static folder
+const path = require("path");
+
 //        --INIT APP--
 const app = express();
 
@@ -17,6 +20,17 @@ app.use(bodyParser.json());
 //        --ROUTE LOGIC--
 const movie = require("./routes/movie");
 const persons = require("./routes/persons");
+
+// Server static assets if in production
+if (process.env.NODE_ENV === "production") {
+  // set static folder
+  app.use(express.static("client/build"));
+
+  // '*' will be used on any and every route
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "cleint", "build", "index.html"));
+  });
+}
 
 //        --ROUTES--
 app.use("/api/movie", movie);
