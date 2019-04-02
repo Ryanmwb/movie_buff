@@ -28,8 +28,8 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App ">
-            <Navbar />
-            <Search />
+            <Navbar path="/" />
+            <Search path="/" />
             <Route exact path="/" component={Landing} />
             <div className="container">
               <Route exact path="/movies" component={MovieDisplay} />
