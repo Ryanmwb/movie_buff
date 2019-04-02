@@ -20,7 +20,6 @@ export const getComingSoon = () => dispatch => {
   dispatch(movieLoading());
   axios
     .get("/api/movie/coming_soon")
-    .then(data => data.json())
     .then(res =>
       dispatch({
         type: GET_UPCOMING,
