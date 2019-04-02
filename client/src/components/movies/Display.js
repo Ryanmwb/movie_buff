@@ -81,6 +81,8 @@ class Display extends Component {
   render() {
     var display;
     if (this.state.movies !== null) {
+      console.log("movies is no longer null.  about to map through movies...");
+      console.log(this.state);
       display = this.state.movies.map(movie => {
         var img = `https://image.tmdb.org/t/p/w185${movie.poster_path}`;
         var alt = `Poster for '${movie.title}'`;
