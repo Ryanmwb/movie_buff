@@ -34,7 +34,14 @@ export const getNowPlaying = () => dispatch => {
   console.log("getNowPlaying action...");
   dispatch(movieLoading());
   axios
-    .get("/api/movie/playing_now")
+    .request({
+      method: "GET",
+      url: "/api/movie/playing_now",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    })
     .then(res =>
       dispatch({
         type: GET_NOW_PLAYING,
@@ -53,6 +60,10 @@ export const getMovieSearch = query => dispatch => {
     .request({
       method: "POST",
       url: "/api/movie/search",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
       data: { movie: query }
     })
     .then(res => {
