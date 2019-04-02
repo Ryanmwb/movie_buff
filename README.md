@@ -7,3 +7,19 @@ _B)_ To run the app you will need to...
 2. Create a file named `keys_dev.js` inside the `config` folder.
 3. Add the following code
    `module.exports = { movieAPI: "<Your API Key>" };`
+
+# What is Movie Buff
+
+Movie buff is a web based application to find details about actors and movies. Utilize our search bar to find your favorite actor's/actress's biography, and movie credits.
+
+## Languages Used
+
+- HTML/CSS
+- Javascript
+- JSX
+
+## Tech Used
+
+- _ERN Stack_ (Express, React, NodeJS)
+- Redux
+-
