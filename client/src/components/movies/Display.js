@@ -80,7 +80,7 @@ class Display extends Component {
 
   render() {
     var display;
-    if (!this.state.loading) {
+    if (this.state.movies !== null) {
       display = this.state.movies.map(movie => {
         var img = `https://image.tmdb.org/t/p/w185${movie.poster_path}`;
         var alt = `Poster for '${movie.title}'`;
