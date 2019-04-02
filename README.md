@@ -22,4 +22,6 @@ Movie buff is a web based application to find details about actors and movies. U
 
 - _ERN Stack_ (Express, React, NodeJS)
 - Redux
--
+- Redux-Thunk
+- React-Redux
+- React-Router-Dom
