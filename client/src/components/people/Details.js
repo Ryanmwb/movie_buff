@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
 // imp proptypes
 import PropTypes from "prop-types";
@@ -109,7 +108,7 @@ class Details extends Component {
       var alt = `Profile of ${this.state.person.name}`;
       var person = this.state.person;
       var gender;
-      if (person.gender == 1) {
+      if (person.gender === 1) {
         gender = "Female";
       } else {
         gender = "Male";

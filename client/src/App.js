@@ -34,7 +34,7 @@ class App extends Component {
             <div className="container">
               <Route exact path="/movies" component={MovieDisplay} />
               <Route exact path="/movie/details" component={MovieDetails} />
-              <Route exact path="/discover" component={Discover} />
+              {/* <Route exact path="/discover" component={Discover} /> */}
               <Route exact path="/people" component={PersonDisplay} />
               <Route exact path="/people/details" component={PersonDetails} />
             </div>

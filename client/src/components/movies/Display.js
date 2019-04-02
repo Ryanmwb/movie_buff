@@ -31,7 +31,7 @@ class Display extends Component {
     if (this.props.display === "upcoming" && this.props.upcoming !== null) {
       this.setState({ movies: this.props.upcoming.results });
     }
-    if (this.props.display === "now_playing" && this.props.loading == false) {
+    if (this.props.display === "now_playing" && this.props.loading === false) {
       this.setState({ movies: this.props.nowPlaying.results });
       this.setState({ page: this.props.nowPlaying.page });
       this.setState({ totalPages: this.props.nowPlaying.total_pages });
@@ -54,7 +54,7 @@ class Display extends Component {
     console.log("cwrp called...");
     console.log(nextProps);
     // set local state after loading is finished
-    if (nextProps.loading == false) {
+    if (nextProps.loading === false) {
       this.setState({ title: nextProps.display });
     }
     if (nextProps.display === "Coming Soon") {
@@ -81,7 +81,7 @@ class Display extends Component {
   render() {
     var display;
     if (!this.state.loading) {
-      var display = this.state.movies.map(movie => {
+      display = this.state.movies.map(movie => {
         var img = `https://image.tmdb.org/t/p/w185${movie.poster_path}`;
         var alt = `Poster for '${movie.title}'`;
         var date = movie.release_date.split("-");

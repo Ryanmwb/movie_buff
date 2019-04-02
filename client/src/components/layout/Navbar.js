@@ -69,11 +69,11 @@ class Navbar extends Component {
                     Now Playing
                   </Link>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link className="nav-link text-dark" to="/discover">
                     Discover
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
             <div className="bg-light row rounded mx-3 px-1 mr-auto">

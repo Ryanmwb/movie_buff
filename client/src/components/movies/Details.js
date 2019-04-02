@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
 // imp proptypes
 import PropTypes from "prop-types";
@@ -73,7 +72,7 @@ class Details extends Component {
             <img
               className="mr-0"
               src={backdrop}
-              alt="backdrop image"
+              alt="backdrop"
               style={{ width: "780px", display: "block", borderRadius: "7px" }}
             />
           </div>
